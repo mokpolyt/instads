@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workshop Instagram Ads — Ubah IG Jadi Mesin Penjualan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-soft: #f0e8ff;
+    --pink-light: #e2d0ff;
+    --pink-mid: #c9a7f4;
+    --pink-vivid: #df4fff;
+    --pink-deep: #9a30c9;
+    --orange-light: #fffde0;
+    --orange-soft: #fff7a8;
+    --orange-mid: #ffe566;
+    --orange-vivid: #f5d000;
+    --white: #fdfaff;
+    --cream: #faf5ff;
+    --text-dark: #1e1030;
+    --text-mid: #4a2a6e;
+    --text-soft: #8a6aaa;
+    --shadow-pink: rgba(200,100,255,0.18);
+    --shadow-orange: rgba(245,208,0,0.20);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── DUPLICATE BANNER ── */
+  .dup-banner {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background: #ffeb00;
+    color: #e00000;
+    text-align: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(16px, 3vw, 24px);
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 12px 16px;
+    animation: dup-blink 1s steps(1, end) infinite;
+  }
+  @keyframes dup-blink {
+    0%, 100% { color: #e00000; }
+    50% { color: transparent; }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5eeff 0%, #fffde8 50%, #f5eeff 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(200,150,255,0.35) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -80px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(255,230,80,0.30) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 32px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--pink-light);
+    color: var(--pink-deep);
+    border: 1.5px solid var(--pink-mid);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .badge::before { content: '✦'; font-size: 11px; }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 72px);
+    line-height: 1.12;
+    font-weight: 900;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: italic; color: var(--pink-deep); }
+  .hero-sub {
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--text-mid);
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto 36px;
+    font-weight: 400;
+  }
+  .hero-cta {
+    display: inline-flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--pink-vivid), var(--orange-vivid));
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 18px 42px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 28px rgba(200,80,255,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 38px rgba(200,80,255,0.42); }
+  .btn-outline {
+    background: transparent;
+    color: var(--pink-deep);
+    border: 2px solid var(--pink-mid);
+    border-radius: 100px;
+    padding: 16px 36px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: background 0.2s;
+  }
+  .btn-outline:hover { background: var(--pink-light); }
+  .event-strip {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 56px;
+  }
+  .event-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .event-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-soft); font-weight: 600; }
+  .event-value { font-size: 15px; font-weight: 700; color: var(--text-dark); }
+  .event-divider { width: 1px; height: 40px; background: var(--pink-light); align-self: center; }
+
+  /* ── SECTION BASE ── */
+  section { padding: 96px 24px; }
+  .container { max-width: 960px; margin: 0 auto; }
+  .section-label {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: var(--pink-vivid);
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 900;
+    color: var(--text-dark);
+    line-height: 1.18;
+    margin-bottom: 18px;
+  }
+  .section-sub { font-size: 16px; color: var(--text-mid); line-height: 1.75; max-width: 620px; }
+
+  /* ── WARNING ── */
+  .warning-section {
+    background: linear-gradient(135deg, #fffce8 0%, #fce8ee 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .warning-section::before {
+    content: '⚠';
+    position: absolute;
+    right: -20px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 200px;
+    opacity: 0.04;
+    user-select: none;
+  }
+  .warning-card {
+    background: white;
+    border-radius: 24px;
+    padding: 48px;
+    box-shadow: 0 4px 40px var(--shadow-pink);
+    border-left: 5px solid var(--pink-vivid);
+    max-width: 760px;
+  }
+  .warning-card p { font-size: 18px; line-height: 1.8; color: var(--text-dark); font-weight: 400; margin-bottom: 16px; }
+  .warning-card p:last-child { margin-bottom: 0; }
+
+  /* ── TRAINER ── */
+  .trainer-section { background: var(--white); }
+  .trainer-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .trainer-photo-wrap { position: relative; width: 100%; max-width: 360px; }
+  .trainer-photo-box {
+    width: 100%;
+    border-radius: 32px;
+    box-shadow: 0 20px 60px var(--shadow-pink);
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--pink-soft) 0%, var(--orange-light) 100%);
+  }
+  .trainer-photo-box img { width: 100%; height: auto; display: block; border-radius: inherit; }
+  .trainer-badge {
+    position: absolute;
+    bottom: -16px; right: -16px;
+    background: linear-gradient(135deg, var(--pink-vivid), var(--orange-vivid));
+    color: white;
+    border-radius: 20px;
+    padding: 14px 22px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 8px 24px var(--shadow-pink);
+    line-height: 1.4;
+    text-align: center;
+  }
+  .trainer-info { width: 100%; }
+  .trainer-name { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: var(--text-dark); margin-bottom: 6px; }
+  .trainer-title { font-size: 14px; color: var(--pink-vivid); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+  .trainer-bio { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 28px; max-width: 580px; margin-left: auto; margin-right: auto; }
+  .creds-list { list-style: none; display: inline-flex; flex-direction: column; gap: 12px; text-align: left; }
+  .creds-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--text-mid); font-weight: 500; }
+  .creds-list li::before { content: '✦'; color: var(--pink-vivid); font-size: 12px; margin-top: 3px; flex-shrink: 0; }
+
+  /* ── CURRICULUM ── */
+  .curriculum-section { background: linear-gradient(160deg, #f5eeff 0%, #fdf5ff 100%); }
+  .curriculum-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 48px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .curriculum-item {
+    background: white;
+    border-radius: 20px;
+    padding: 28px 28px 28px 24px;
+    box-shadow: 0 2px 20px rgba(200,80,255,0.08);
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    border: 1.5px solid rgba(200,150,255,0.3);
+    transition: box-shadow 0.2s;
+  }
+  .curriculum-item:hover { box-shadow: 0 8px 32px var(--shadow-pink); }
+  .curriculum-num {
+    background: linear-gradient(135deg, var(--pink-vivid), var(--orange-vivid));
+    color: white;
+    width: 36px; height: 36px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 800; flex-shrink: 0;
+  }
+  .curriculum-text { font-size: 14px; font-weight: 600; color: var(--text-dark); line-height: 1.5; margin-top: 8px; }
+
+  /* ── GOALS ── */
+  .goals-section { background: white; }
+  .goals-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+  .goal-card {
+    background: linear-gradient(160deg, var(--pink-soft) 0%, var(--orange-light) 100%);
+    border-radius: 24px;
+    padding: 32px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .goal-card::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 100px; height: 100px;
+    background: rgba(200,150,255,0.25);
+    border-radius: 50%;
+  }
+  .goal-icon { font-size: 28px; margin-bottom: 14px; }
+  .goal-text { font-size: 14px; font-weight: 600; color: var(--text-dark); line-height: 1.6; }
+
+  /* ── HASIL PRAKTEK ── */
+  .hasil-section { background: linear-gradient(160deg, #f5eeff 0%, #fdf5ff 100%); }
+  .hasil-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 48px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hasil-item {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(200,80,255,0.12);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: white;
+  }
+  .hasil-item:hover { transform: translateY(-4px); box-shadow: 0 12px 36px var(--shadow-pink); }
+  .hasil-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ── PERSONA ── */
+  .persona-section { background: linear-gradient(160deg, #fdf5ff 0%, #f5eeff 100%); }
+  .persona-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 48px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .persona-card {
+    background: white;
+    border-radius: 24px;
+    padding: 32px 28px 28px;
+    text-align: center;
+    border: 1.5px solid rgba(200,150,255,0.25);
+    box-shadow: 0 2px 20px rgba(232,105,138,0.07);
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .persona-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--pink-vivid), var(--orange-vivid));
+  }
+  .persona-card:hover { box-shadow: 0 12px 36px var(--shadow-pink); }
+  .persona-emoji { font-size: 40px; margin-bottom: 14px; display: block; }
+  .persona-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+  .persona-desc { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
+  .persona-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    background: var(--pink-soft);
+    color: var(--pink-deep);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* ── BONUS ── */
+  .bonus-section {
+    background: linear-gradient(135deg, #fffce8 0%, #f5eeff 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .bonus-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  .bonus-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--pink-vivid), var(--orange-vivid));
+    color: white;
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-radius: 100px;
+    padding: 6px 18px;
+    margin-bottom: 20px;
+  }
+  .bonus-value {
+    font-size: 15px;
+    color: var(--text-mid);
+    font-weight: 600;
+    margin-bottom: 32px;
+  }
+  .bonus-value strong { color: var(--pink-deep); }
+  .bonus-image-box {
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px var(--shadow-pink);
+  }
+  .bonus-image-box img { width: 100%; height: auto; display: block; }
+
+  /* ── FAQ ── */
+  .faq-section { background: white; }
+  .faq-list {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .faq-item {
+    border: 1.5px solid rgba(200,150,255,0.35);
+    border-radius: 18px;
+    padding: 0;
+    overflow: hidden;
+  }
+  .faq-q {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.4;
+    margin: 0;
+    padding: 22px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    user-select: none;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+  }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--pink-soft);
+    color: var(--pink-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+  }
+  .faq-item.open .faq-icon {
+    background: linear-gradient(135deg, var(--pink-vivid), var(--orange-vivid));
+    color: white;
+    transform: rotate(135deg);
+  }
+  .faq-a-wrap {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .faq-item.open .faq-a-wrap {
+    max-height: 400px;
+  }
+  .faq-a {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    padding: 0 26px 22px;
+  }
+
+  /* ── PRICING ── */
+  .pricing-section {
+    background: linear-gradient(135deg, var(--pink-soft) 0%, var(--orange-light) 60%, var(--pink-light) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-card {
+    background: white;
+    border-radius: 36px;
+    padding: 56px 48px;
+    max-width: 560px;
+    margin: 0 auto;
+    box-shadow: 0 24px 80px rgba(200,80,255,0.20);
+    position: relative;
+    z-index: 1;
+  }
+  .pricing-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--pink-vivid), var(--orange-vivid));
+    color: white;
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-radius: 100px;
+    padding: 6px 18px;
+    margin-bottom: 24px;
+  }
+  .price-old { font-size: 20px; color: var(--text-soft); text-decoration: line-through; margin-bottom: 8px; }
+  .price-new { font-family: 'Playfair Display', serif; font-size: 60px; font-weight: 900; color: var(--pink-deep); line-height: 1; margin-bottom: 8px; }
+  .price-save {
+    display: inline-block;
+    background: var(--orange-light);
+    color: #b38000;
+    border-radius: 100px;
+    padding: 6px 18px;
+    font-size: 13px; font-weight: 700;
+    margin-bottom: 32px;
+  }
+  .pricing-features { list-style: none; text-align: left; margin-bottom: 36px; display: flex; flex-direction: column; gap: 12px; }
+  .pricing-features li { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text-mid); font-weight: 500; }
+  .pricing-features li::before {
+    content: '✓';
+    background: linear-gradient(135deg, var(--pink-vivid), var(--orange-vivid));
+    color: white;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  /* ── CHECKOUT ── */
+  .checkout-section { background: var(--white); padding: 64px 20px 96px; }
+  .checkout-box { max-width: 420px; margin: 0 auto; font-size: 13px; color: var(--text-dark); }
+  .co-field { margin-bottom: 18px; }
+  .co-label { display: block; font-size: 11px; color: #333; margin-bottom: 6px; }
+  .co-label span { color: #e53935; }
+  .co-input {
+    width: 100%; height: 44px; padding: 0 14px;
+    background: #f4f7fb; border: 1px solid #dde3ec; border-radius: 6px;
+    font-family: inherit; font-size: 13px; color: var(--text-dark);
+  }
+  .co-input::placeholder { color: #9aa3b2; }
+  .co-input:focus { outline: none; border-color: var(--pink-vivid); }
+  .co-input.error { border-color: #e53935; background: #fff; }
+  .co-hint { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 10.5px; color: #e53935; }
+  .co-phone { display: flex; gap: 8px; }
+  .co-code {
+    display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+    height: 44px; padding: 0 10px; background: #f4f7fb;
+    border: 1px solid #dde3ec; border-radius: 6px; font-size: 13px;
+  }
+  .co-code small { color: #9aa3b2; font-size: 9px; }
+  .co-heading { display: flex; align-items: center; gap: 12px; margin: 26px 0 14px; font-size: 17px; font-weight: 700; }
+  .co-heading::after { content: ''; flex: 1; height: 1px; background: #dde3ec; }
+  .co-methods { display: flex; flex-direction: column; gap: 10px; }
+  .co-method {
+    display: flex; align-items: center; gap: 14px; cursor: pointer;
+    height: 44px; padding: 0 16px; background: #f4f7fb;
+    border: 1px solid #dde3ec; border-radius: 6px; font-size: 13px; color: #333;
+  }
+  .co-method:has(input:checked) { border-color: #1e88e5; background: #eef6ff; }
+  .co-method input { accent-color: #1e88e5; width: 15px; height: 15px; flex-shrink: 0; }
+  .co-logo {
+    width: 36px; flex-shrink: 0; text-align: center;
+    font-size: 10px; font-weight: 800; letter-spacing: 0.3px;
+  }
+  .co-summary { margin-top: 22px; padding: 14px 16px 12px; border: 1px solid #1e88e5; border-radius: 6px; background: #fff; }
+  .co-summary-title { font-size: 11px; text-decoration: underline; margin-bottom: 12px; }
+  .co-row { display: flex; justify-content: space-between; font-size: 12px; color: #444; padding-bottom: 12px; border-bottom: 1px solid #e6eaf0; }
+  .co-row.total { border: none; padding: 12px 0 0; font-weight: 700; color: #111; }
+  .co-submit {
+    width: 100%; margin-top: 20px; height: 48px; border: none; border-radius: 4px;
+    background: #ff5a00; color: #fff; font-family: inherit; font-size: 13px;
+    font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .co-submit:hover { background: #e24f00; }
+
+  /* ── GALLERY ── */
+  .gallery-section { background: white; text-align: center; }
+  .gallery-grid {
+    display: flex; flex-direction: column; gap: 16px;
+    margin-top: 40px; max-width: 600px; margin-left: auto; margin-right: auto;
+  }
+  .gallery-item {
+    background: linear-gradient(135deg, var(--pink-soft), var(--orange-light));
+    border-radius: 20px; overflow: hidden; position: relative;
+  }
+  .gallery-item img { width: 100%; height: auto; max-height: 420px; object-fit: cover; display: block; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text-dark); color: rgba(255,255,255,0.6);
+    text-align: center; padding: 40px 24px; font-size: 13px; line-height: 1.8;
+  }
+  footer strong { color: white; font-weight: 700; }
+  footer .footer-logo {
+    font-family: 'Playfair Display', serif; font-size: 22px;
+    font-weight: 900; color: white; margin-bottom: 8px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    section { padding: 56px 6px; }
+    .persona-card { padding: 24px 14px 20px; }
+    .trainer-photo-wrap { max-width: 280px; }
+    .goals-grid { grid-template-columns: 1fr; }
+    .hasil-grid { grid-template-columns: repeat(2, 1fr); }
+    .event-divider { display: none; }
+    .warning-card { padding: 32px 24px; }
+    .pricing-card { padding: 40px 28px; }
+    .price-new { font-size: 48px; }
+    .hero-inner { padding: 60px 6px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ DUPLICATE BANNER ═══ -->
+<div class="dup-banner">THIS IS DUPLICATE PAGE</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div style="position:absolute; top:24px; left:0; right:0; text-align:center; z-index:3;">
+    <img src="https://cdn.scalev.com/uploads/1780468615/2vFoVjsVfLS_lX0MQh6Rww/1780468615740-logo-creativy-no-tag.webp" alt="Creativy" style="height:32px; width:auto; display:inline-block;">
+  </div>
+  <div class="hero-inner">
+    <div class="badge">Workshop Online · 21 Oktober 2026</div>
+    <h1>Jangan Cuma Posting.<br>Jadikan Instagram <em>Mesin Penjualan.</em></h1>
+    <p class="hero-sub">
+      Pelajari strategi iklan dari praktisi berpengalaman, mulai dari setup kampanye, menentukan audiens yang tepat, hingga mengoptimalkan iklan agar menghasilkan penjualan.
+    </p>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn-primary">Daftar Sekarang →</a>
+      <a href="#curriculum" class="btn-outline">Lihat Materi</a>
+    </div>
+    <div class="event-strip">
+      <div class="event-item">
+        <span class="event-label">Tanggal</span>
+        <span class="event-value">21 Oktober 2026</span>
+      </div>
+      <div class="event-divider"></div>
+      <div class="event-item">
+        <span class="event-label">Platform</span>
+        <span class="event-value">Zoom Meeting</span>
+      </div>
+      <div class="event-divider"></div>
+      <div class="event-item">
+        <span class="event-label">Waktu</span>
+        <span class="event-value">19.30 WIB – Selesai</span>
+      </div>
+      <div class="event-divider"></div>
+      <div class="event-item">
+        <span class="event-label">Investasi</span>
+        <span class="event-value" style="color: var(--pink-deep);">Rp 99.000</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WARNING ═══ -->
+<section class="warning-section">
+  <div class="container">
+    <div class="warning-card">
+      <span class="section-label">Perhatian Dulu</span>
+      <h2 class="section-title">Instagram Ads Bukan Soal Keberuntungan.</h2>
+      <p>Tanpa strategi yang tepat, budget iklan bisa habis sebelum menghasilkan satu penjualan pun.</p>
+      <p style="color: var(--text-mid); font-size: 16px;">
+        Banyak bisnis menjalankan iklan dengan harapan order akan datang sendiri. Namun kenyataannya, keberhasilan Meta Ads ditentukan oleh banyak faktor, mulai dari target audiens, materi iklan, hingga optimasi kampanye. Jika salah langkah, uang yang dikeluarkan hanya berubah menjadi angka view dan engagement tanpa omzet.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRAINER ═══ -->
+<section class="trainer-section">
+  <div class="container">
+    <div class="trainer-stack">
+      <div class="trainer-photo-wrap">
+        <div class="trainer-photo-box">
+          <img src="https://cdn.scalev.id/business_files/DHofE4R8vCiLD_DH9ZMcWMjc/1760151832498-1759203194950-1733893070166-WINNING_CAMPAIGN%20(3).webp" alt="Trainer — Meta Ads Expert">
+        </div>
+        <div class="trainer-badge">10+ Tahun<br>Meta Ads Expert</div>
+      </div>
+      <div class="trainer-info">
+        <span class="section-label">Trainer Kamu</span>
+        <h2 class="trainer-name">Praktisi Meta Ads</h2>
+        <p class="trainer-title">Founder Baggos Group · CEO Creativy</p>
+        <img src="https://cdn.scalev.id/business_files/C6zNObeGdiRwpn6nzQYBk8hi/1759203213869-1733893204697-image_2024-12-11_120004629%20(3).webp" alt="Founder Baggos Group · CEO Creativy" style="width:100%; max-width:400px; border-radius:20px; margin: 0 auto 24px; display:block;">
+        <p class="trainer-bio">
+          Saya sudah beriklan lebih dari 10 tahun di Platform Instagram dan Facebook. Dengan spent budget iklan total Milyaran Rupiah, saya sudah merasakan manis pahitnya beriklan. Dari semua pengalaman ini, saya akhirnya merumuskan metode yang terbukti <em>work</em> untuk mendatangkan banyak prospek dan penjualan.
+        </p>
+        <ul class="creds-list">
+          <li>Praktisi Meta Ads (FB &amp; IG Ads) sejak 2014</li>
+          <li>Menghasilkan omset total Miliaran dari iklan FB &amp; IG Ads</li>
+          <li>Trainer digital marketing sejak 2018</li>
+          <li>Ribuan alumni pelatihan dari seluruh Indonesia</li>
+          <li>Founder Baggos Group · CEO Creativy</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CURRICULUM ═══ -->
+<section class="curriculum-section" id="curriculum">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:8px;">
+      <span class="section-label">Apa yang Akan Kamu Pelajari</span>
+    </div>
+    <h2 class="section-title" style="text-align:center; margin: 0 auto 12px;">Step-by-Step dibahas tuntas!</h2>
+    <p class="section-sub" style="text-align:center; margin: 0 auto;">
+      Semua materi dirancang dari nol sampai optimasi, biar kamu langsung bisa praktek.
+    </p>
+    <div class="curriculum-grid">
+      <div class="curriculum-item"><div class="curriculum-num">01</div><p class="curriculum-text">Persiapan sebelum beriklan Instagram Ads</p></div>
+      <div class="curriculum-item"><div class="curriculum-num">02</div><p class="curriculum-text">Strategi membuat konten Instagram Ads yang powerful</p></div>
+      <div class="curriculum-item"><div class="curriculum-num">03</div><p class="curriculum-text">Step by Step setting Instagram Ads dari awal</p></div>
+      <div class="curriculum-item"><div class="curriculum-num">04</div><p class="curriculum-text">Cara tepat menentukan Key Performance Indicator iklan</p></div>
+      <div class="curriculum-item"><div class="curriculum-num">05</div><p class="curriculum-text">Evaluasi iklan Instagram Ads secara menyeluruh</p></div>
+      <div class="curriculum-item"><div class="curriculum-num">06</div><p class="curriculum-text">Optimasi iklan Instagram Ads untuk hasil maksimal</p></div>
+      <div class="curriculum-item"><div class="curriculum-num">07</div><p class="curriculum-text">Hasil Praktek Instagram Ads — Case study nyata dari pengalaman 10+ tahun beriklan</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HASIL PRAKTEK ═══ -->
+<section class="hasil-section">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:8px;">
+      <span class="section-label">Bukti Nyata</span>
+    </div>
+    <h2 class="section-title" style="text-align:center; margin: 0 auto 12px;">Hasil Praktek Instagram Ads</h2>
+    <p class="section-sub" style="text-align:center; margin: 0 auto;">
+      Bukan sekadar teori — ini hasil nyata dari penerapan strategi yang akan kamu pelajari.
+    </p>
+    <div style="display:flex; flex-direction:column; gap:16px; margin-top:48px;">
+      <div class="hasil-item"><img src="https://cdn.scalev.id/business_files/jHO9HWjx_8mK7LqNFkDJY_ti/1760167451072-WhatsApp%20Image%202025-06-23%20at%2015.05.43%20(1).webp" alt="Hasil 1" loading="lazy"></div>
+      <div class="hasil-item"><img src="https://cdn.scalev.id/business_files/56nVvtCgCft-GlBNpFbPtWA2/1760167424701-WhatsApp%20Image%202025-06-23%20at%2015.05.44%20(1).webp" alt="Hasil 2" loading="lazy"></div>
+      <div class="hasil-item"><img src="https://cdn.scalev.id/business_files/t8ITFSSGrUEUrVqRENCmXFnt/1760167401505-WhatsApp%20Image%202025-06-23%20at%2015.06.18.webp" alt="Hasil 3" loading="lazy"></div>
+      <div class="hasil-item"><img src="https://cdn.scalev.id/business_files/K4UkXRpf-jCU2cF56ZBetCQ3/1760167201191-WhatsApp%20Image%202025-06-23%20at%2015.06.19.webp" alt="Hasil 4" loading="lazy"></div>
+      <div class="hasil-item"><img src="https://cdn.scalev.id/business_files/bUvguO9p_2baXV61Qlw0FRNI/1760167518110-WhatsApp%20Image%202025-06-23%20at%2015.06.18%20(1).webp" alt="Hasil 5" loading="lazy"></div>
+      <div class="hasil-item"><img src="https://cdn.scalev.id/business_files/1Ifr-Ht8jvwJ4CXvwiDqBQD0/1760167493838-WhatsApp%20Image%202025-06-23%20at%2015.05.40%20(1).webp" alt="Hasil 6" loading="lazy"></div>
+      <div class="hasil-item"><img src="https://cdn.scalev.id/business_files/Mlt42bhgSqF8bc70r_Gz0IbI/1760167474439-WhatsApp%20Image%202025-06-23%20at%2015.05.41%20(1).webp" alt="Hasil 7" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GOALS ═══ -->
+<section class="goals-section">
+  <div class="container">
+    <span class="section-label">Setelah Ikut Kelas Ini</span>
+    <h2 class="section-title">Goals yang Akan<br>Kamu Capai</h2>
+    <div class="goals-grid">
+      <div class="goal-card"><div class="goal-icon">🎯</div><p class="goal-text">Paham apa saja yang harus disiapkan untuk beriklan di Instagram Ads</p></div>
+      <div class="goal-card"><div class="goal-icon">📋</div><p class="goal-text">Tahu tahapan beriklan Instagram yang benar dan sesuai standar</p></div>
+      <div class="goal-card"><div class="goal-icon">📊</div><p class="goal-text">Paham mana iklan yang bagus dan jelek dengan KPI Iklan yang jelas</p></div>
+      <div class="goal-card"><div class="goal-icon">💰</div><p class="goal-text">Menghindari budget terbuang sia-sia dengan evaluasi iklan yang tepat</p></div>
+      <div class="goal-card"><div class="goal-icon">🏆</div><p class="goal-text">Mendapatkan iklan yang Winning dengan metode yang sudah terbukti</p></div>
+      <div class="goal-card"><div class="goal-icon">💬</div><p class="goal-text">Sesi konsultasi walaupun kelas sudah selesai — support tetap ada!</p></div>
+    </div>
+    <div style="max-width:720px; margin:48px auto 0; display:flex; flex-direction:column; gap:18px;">
+      <p style="font-size:16px; color:var(--text-mid); line-height:1.8;">Di kelas ini, Anda akan belajar langsung dari mentor yang benar-benar menjalankan iklan setiap hari, bukan sekadar teori. Anda akan dibimbing langkah demi langkah mulai dari dasar hingga praktik — sehingga tahu apa yang harus dilakukan, apa yang harus dihindari, dan bagaimana menjalankan iklan dengan lebih efektif.</p>
+      <p style="font-size:16px; color:var(--text-mid); line-height:1.8;">Metode yang diajarkan sudah teruji dan mudah diterapkan, baik untuk pemula, owner bisnis, content creator, tim marketing, maupun advertiser yang ingin meningkatkan hasil iklannya.</p>
+      <p style="font-size:16px; color:var(--text-mid); line-height:1.8;">Yang paling penting, <strong style="color:var(--text-dark);">Anda tidak belajar sendirian.</strong> Anda bisa bertanya, berdiskusi, dan mendapatkan arahan langsung dari mentor selama sesi berlangsung — sehingga proses belajar menjadi lebih cepat dan minim trial &amp; error.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PERSONA ═══ -->
+<section class="persona-section">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:8px;">
+      <span class="section-label">Kelas Ini Untuk Siapa?</span>
+    </div>
+    <h2 class="section-title" style="text-align:center; margin: 0 auto 12px;">Kamu Pasti Ada<br>di Salah Satu Ini 👇</h2>
+    <p class="section-sub" style="text-align:center; margin: 0 auto;">Workshop ini dirancang inklusif — dari yang baru mau mulai sampai yang sudah jalan tapi stuck.</p>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <span class="persona-emoji">🏪</span>
+        <div class="persona-title">Pebisnis &amp; UMKM</div>
+        <p class="persona-desc">Punya produk atau jasa bagus, tapi penjualan masih mengandalkan organik dan belum tahu cara scale-up lewat iklan.</p>
+        <div class="persona-check">✓ Cocok untukmu</div>
+      </div>
+      <div class="persona-card">
+        <span class="persona-emoji">📣</span>
+        <div class="persona-title">Tim Advertiser</div>
+        <p class="persona-desc">Sudah pernah running iklan tapi hasilnya naik-turun, belum paham cara optimasi biar konsisten menghasilkan.</p>
+        <div class="persona-check">✓ Cocok untukmu</div>
+      </div>
+      <div class="persona-card">
+        <span class="persona-emoji">🎨</span>
+        <div class="persona-title">Content Creator</div>
+        <p class="persona-desc">Bikin konten sudah jago, tapi belum tahu cara boost konten biar jangkauannya luas dan bisa menghasilkan penjualan.</p>
+        <div class="persona-check">✓ Cocok untukmu</div>
+      </div>
+      <div class="persona-card">
+        <span class="persona-emoji">🌱</span>
+        <div class="persona-title">Pemula Total</div>
+        <p class="persona-desc">Belum pernah ngiklan sama sekali, pengen belajar dari nol dengan panduan yang jelas, praktis, dan langsung bisa dicoba.</p>
+        <div class="persona-check">✓ Cocok untukmu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BONUS ═══ -->
+<section class="bonus-section">
+  <div class="container">
+    <div class="bonus-wrap">
+      <div class="bonus-tag">🎁 Bonus Spesial</div>
+      <h2 class="section-title" style="text-align:center;">Bonus Kelas Funnelling<br>Dengan Konten Instagram</h2>
+      <p class="bonus-value">Senilai <strong>Rp 250.000</strong> — Kamu dapatkan <strong>GRATIS</strong> saat daftar workshop ini!</p>
+      <div class="bonus-image-box">
+        <img src="https://cdn.scalev.com/uploads/1790673587/sXA2MNU-qGlFTEoj42sUzA/1790673586668-KONTEN-IG-K3-copy.webp" alt="Bonus Kelas Funnelling Dengan Konten Instagram">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section">
+  <div class="container">
+    <div style="text-align:center;">
+      <span class="section-label">Pertanyaan Umum</span>
+      <h2 class="section-title" style="margin: 0 auto 8px;">Ada yang Masih<br>Bikin Ragu?</h2>
+      <p class="section-sub" style="margin: 0 auto;">Kami jawab tuntas di sini.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Apakah workshop ini cocok untuk pemula yang belum pernah ngiklan sama sekali?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a-wrap"><div class="faq-a">Ya, sangat cocok! Materi disusun dari nol, mulai dari persiapan, setting akun, hingga optimasi. Trainer akan memandu step-by-step sehingga pemula pun bisa langsung paham dan praktek.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Bagaimana cara bergabung ke Zoom Meeting?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a-wrap"><div class="faq-a">Setelah pembayaran Anda akan masuk group. Di sana akan diberikan link Zoom-nya.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Apa yang harus saya siapkan sebelum datang ke workshop?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a-wrap"><div class="faq-a">Smartphone atau laptop untuk menyaksikan kelas.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Berapa budget iklan minimal yang dibutuhkan untuk mulai beriklan?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a-wrap"><div class="faq-a">Budget iklan bisa dimulai dari Rp 30.000–Rp 50.000 per hari. Di workshop ini justru akan diajarkan cara memaksimalkan budget kecil agar hasilnya optimal dan tidak boncos.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Apakah harga Rp 99.000 sudah termasuk materi dan rekaman?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a-wrap"><div class="faq-a">Ya, harga itu sudah include live Zoom dan rekaman.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Bagaimana cara mendaftar dan melakukan pembayaran?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a-wrap"><div class="faq-a">Isi form lalu klik tombol "Daftar Sekarang" di halaman ini, nanti akan dipandu Customer Service kami. Setelah pembayaran terkonfirmasi, kamu akan mendapatkan informasi detail via WhatsApp.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <span class="section-label" style="display:block; text-align:center;">Investasi 1x untuk Hasil Selamanya</span>
+    <h2 class="section-title" style="text-align:center; margin: 0 auto 48px;">Berapa Investasinya?</h2>
+    <div class="pricing-card">
+      <div class="pricing-tag">🔥 Harga Khusus 25 Pendaftar Tercepat</div>
+      <div class="price-old">Rp 300.000</div>
+      <div class="price-new">Rp 99.000</div>
+
+      <ul class="pricing-features">
+        <li>Workshop Online via Zoom Meeting</li>
+        <li>Rabu 21 Oktober 2026 · Pukul 19.30 WIB – Selesai</li>
+        <li>Materi Step-by-Step Instagram Ads Lengkap</li>
+        <li>Template &amp; Panduan Siap Pakai</li>
+        <li>Sesi konsultasi pasca kelas</li>
+        <li>Cocok untuk pemula hingga intermediate</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CHECKOUT ═══ -->
+<section class="checkout-section" id="checkout">
+  <div class="checkout-box">
+    <div class="co-field">
+      <label class="co-label" for="co-name">Nama Lengkap <span>*</span></label>
+      <input class="co-input" id="co-name" type="text" placeholder="...">
+    </div>
+
+    <div class="co-field">
+      <label class="co-label" for="co-wa">No. WhatsApp <span>*</span></label>
+      <div class="co-phone">
+        <div class="co-code">🇮🇩 <span>+62</span> <small>⌄</small></div>
+        <input class="co-input" id="co-wa" type="tel" inputmode="numeric" placeholder="81234567890">
+      </div>
+    </div>
+
+    <div class="co-field">
+      <label class="co-label" for="co-email">Email <span>*</span></label>
+      <input class="co-input error" id="co-email" type="email" placeholder="Contoh: arman03@gmail.com">
+      <div class="co-hint">⚠ Invoice, status pembayaran, &amp; resi, dikirimnya lewat email ;)</div>
+    </div>
+
+    <div class="co-heading">Metode Pembayaran:</div>
+    <div class="co-methods">
+      <label class="co-method"><input type="radio" name="pay" checked><span class="co-logo" style="font-size:20px;">👛</span>Virtual Account / GoPay / DANA</label>
+      <label class="co-method"><input type="radio" name="pay"><span class="co-logo" style="font-size:13px; font-weight:900;">QRIS</span>QRIS</label>
+      <label class="co-method"><input type="radio" name="pay"><span class="co-logo" style="color:#e8590c; font-size:12px;">BNI</span>BNI Virtual Account</label>
+      <label class="co-method"><input type="radio" name="pay"><span class="co-logo" style="color:#0b5ea8;">BRI</span>BRI Virtual Account</label>
+      <label class="co-method"><input type="radio" name="pay"><span class="co-logo" style="color:#00a29a; font-size:12px;">BSI</span>BSI Virtual Account</label>
+      <label class="co-method"><input type="radio" name="pay"><span class="co-logo" style="color:#c8102e; font-size:8px;">CIMB NIAGA</span>Bank CIMB Niaga Virtual Account</label>
+      <label class="co-method"><input type="radio" name="pay"><span class="co-logo" style="color:#003d79; font-size:9px;">mandiri</span>Bank Mandiri Virtual Account</label>
+    </div>
+
+    <div class="co-summary">
+      <div class="co-summary-title">RINCIAN PESANAN:</div>
+      <div class="co-row"><span>Instagram Ads</span><span>Rp 99.000</span></div>
+      <div class="co-row total"><span>Total</span><span>Rp 99.000</span></div>
+    </div>
+
+    <button class="co-submit" type="button">Ya Saya Gabung</button>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section class="gallery-section">
+  <div class="container">
+    <span class="section-label">Dokumentasi</span>
+    <h2 class="section-title">Workshop Instagram Ads<br>&amp; Facebook Ads</h2>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://cdn.scalev.id/business_files/RZcSDSiZkmNK5ifTQqUwzOCJ/1760167651210-1759204856376-1744186548341-1733896021350-image_202_wcUnAwX%20(3).webp" alt="Workshop Dokumentasi 1" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://cdn.scalev.id/business_files/RwUeUvXpvr3i-6RuPblUp9qK/1760167671931-1759204867406-1752465958723-1751008460596-FB3.webp" alt="Workshop Dokumentasi 2" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://cdn.scalev.id/business_files/bW0lTrvD3zzxU6OfIfVKB10K/1760167767940-1759204840429-1752465979645-1751008504137-FB5.webp" alt="Workshop Dokumentasi 3" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://cdn.scalev.id/business_files/4C4U95xsNARsILnGj64OawLe/1760167784749-1759204771890-1752465709069-1751008418216-FB1.webp" alt="Workshop Dokumentasi 4" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://cdn.scalev.id/business_files/oAXK3IYgsWsT73cgcd0pfb_8/1760167823901-1759204812623-1752465940217-1751008435720-FB2.webp" alt="Workshop Dokumentasi 5" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section style="background: linear-gradient(135deg, var(--pink-deep) 0%, var(--orange-vivid) 100%); padding: 80px 24px; text-align: center;">
+  <div class="container">
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(28px,4vw,48px); color: white; margin-bottom: 16px; font-weight: 900;">
+      Siap Jadikan IG-mu <em style="font-style:italic;">Mesin Penjualan?</em>
+    </h2>
+    <p style="color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 36px;">
+      Bergabunglah dengan ribuan alumni yang sudah berhasil. Daftar sebelum kursi habis!
+    </p>
+    <a href="#pricing" class="btn-primary" style="background: white; color: var(--pink-deep); box-shadow: 0 8px 28px rgba(0,0,0,0.2); font-size:17px; padding: 20px 48px;" onclick="if(typeof fbq==='function'){fbq('track','AddToCart',{content_name:'Workshop Instagram Ads',content_ids:['wsig-2026'],content_type:'product',value:299000,currency:'IDR'});}">
+      Daftar Workshop Sekarang →
+    </a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-logo">Instagram Ads </div>
+  <p>Powered By: <strong>PT SOLUSI KREATIF BERKAH</strong></p>
+  <p style="margin-top: 6px;">Copyright © 2025 · All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
